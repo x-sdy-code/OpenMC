@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='utf-8'?>
+<model>
+  <materials>
+    <material id="1" name="Cu">
+      <density units="g/cc" value="8.96"/>
+      <nuclide ao="0.6915" name="Cu63"/>
+      <nuclide ao="0.3085" name="Cu65"/>
+    </material>
+    <material id="2" name="Fe">
+      <density units="g/cc" value="8.93"/>
+      <nuclide ao="0.05845" name="Fe54"/>
+      <nuclide ao="0.91754" name="Fe56"/>
+      <nuclide ao="0.02119" name="Fe57"/>
+      <nuclide ao="0.00282" name="Fe58"/>
+    </material>
+    <material depletable="true" id="3" name="U_f">
+      <density units="g/cc" value="11.34"/>
+      <nuclide ao="5e-05" name="U234"/>
+      <nuclide ao="0.00274" name="U235"/>
+      <nuclide ao="0.00123" name="U236"/>
+      <nuclide ao="0.3185" name="U238"/>
+      <nuclide ao="6e-05" name="Pu238"/>
+      <nuclide ao="0.00166" name="Pu239"/>
+      <nuclide ao="0.00071" name="Pu240"/>
+      <nuclide ao="0.00025" name="Pu241"/>
+      <nuclide ao="0.00012" name="Pu242"/>
+      <nuclide ao="0.00014" name="Am241"/>
+      <nuclide ao="2e-05" name="Am243"/>
+      <nuclide ao="0.00011" name="Np237"/>
+      <nuclide ao="4e-05" name="Ag109"/>
+      <nuclide ao="0.0006" name="Cs133"/>
+      <nuclide ao="0.00023" name="Cs135"/>
+      <nuclide ao="0.00013" name="Sm147"/>
+      <nuclide ao="0.00012" name="Sm150"/>
+      <nuclide ao="1e-05" name="Sm151"/>
+      <nuclide ao="5e-05" name="Sm152"/>
+      <nuclide ao="0.00041" name="Nd143"/>
+      <nuclide ao="0.00033" name="Nd145"/>
+      <nuclide ao="5e-05" name="Eu153"/>
+      <nuclide ao="1e-05" name="Gd155"/>
+      <nuclide ao="0.67256" name="O16"/>
+    </material>
+    <material id="4" name="H2O">
+      <density units="g/cc" value="1"/>
+      <nuclide ao="0.99984426" name="H1"/>
+      <nuclide ao="0.00015574" name="H2"/>
+      <nuclide ao="1.999242" name="O16"/>
+      <nuclide ao="0.000758" name="O17"/>
+    </material>
+    <material id="5" name="He_m5">
+      <density units="g/cc" value="0.0001787"/>
+      <nuclide ao="2e-06" name="He3"/>
+      <nuclide ao="0.999998" name="He4"/>
+    </material>
+    <material id="6" name="Zr_m6">
+      <density units="g/cc" value="6.55"/>
+      <nuclide ao="0.5145" name="Zr90"/>
+      <nuclide ao="0.1122" name="Zr91"/>
+      <nuclide ao="0.1715" name="Zr92"/>
+      <nuclide ao="0.1738" name="Zr94"/>
+      <nuclide ao="0.028" name="Zr96"/>
+    </material>
+    <material id="7" name="Fe_m7">
+      <density units="g/cc" value="7.9"/>
+      <nuclide ao="0.05845" name="Fe54"/>
+      <nuclide ao="0.91754" name="Fe56"/>
+      <nuclide ao="0.02119" name="Fe57"/>
+      <nuclide ao="0.00282" name="Fe58"/>
+    </material>
+    <material id="8" name="Air">
+      <density units="g/cm3" value="0.00129"/>
+      <nuclide ao="3.336e-05" name="Ar36"/>
+      <nuclide ao="6.29e-06" name="Ar38"/>
+      <nuclide ao="0.00996035" name="Ar40"/>
+      <nuclide ao="0.20992041" name="O16"/>
+      <nuclide ao="7.959e-05" name="O17"/>
+      <nuclide ao="0.7771428600000001" name="N14"/>
+      <nuclide ao="0.00285714" name="N15"/>
+    </material>
+    <material id="9" name="PRT_m9">
+      <density units="g/cm3" value="0.00129"/>
+      <nuclide ao="2.0" name="Al27"/>
+      <nuclide ao="2.3685300000000002" name="Mg24"/>
+      <nuclide ao="0.3006" name="Mg25"/>
+      <nuclide ao="0.33087" name="Mg26"/>
+      <nuclide ao="3.6891872" name="Si28"/>
+      <nuclide ao="0.1873264" name="Si29"/>
+      <nuclide ao="0.1234864" name="Si30"/>
+      <nuclide ao="11.995452" name="O16"/>
+      <nuclide ao="0.004548" name="O17"/>
+      <nuclide ao="3.99937704" name="H1"/>
+      <nuclide ao="0.00062296" name="H2"/>
+    </material>
+  </materials>
+  <geometry>
+    <cell id="542" material="3" name="fuel" region="-713 717 -716" universe="208"/>
+    <cell id="543" material="5" name="He" region="713 -714 717 -716" universe="208"/>
+    <cell id="544" material="6" name="Zrv22" region="714 -715 717 -716" universe="208"/>
+    <cell id="545" material="2" region="715 717 -716" universe="208"/>
+    <cell id="546" material="8" name="fuel" region="-713 717 -716" universe="209"/>
+    <cell id="547" material="8" name="He" region="713 -714 717 -716" universe="209"/>
+    <cell id="548" material="6" name="Zrv22" region="714 -715 717 -716" universe="209"/>
+    <cell id="549" material="2" region="715 717 -716" universe="209"/>
+    <cell fill="210" id="550" region="718 -719 720 -721 -716 717" universe="211"/>
+    <cell id="551" material="2" name="assembly outer" region="~(718 -719 720 -721)" universe="211"/>
+    <cell fill="212" id="552" region="722 -723 724 -725 -716 717" universe="213"/>
+    <cell id="553" material="2" name="assembly outer" region="~(722 -723 724 -725)" universe="213"/>
+    <cell id="554" material="1" name="clad_Cu" region="-727 726 731 -728" universe="214"/>
+    <cell id="555" material="1" name="clad_up_Cu" region="-726 730 -729" universe="214"/>
+    <cell id="556" material="1" name="clad_down_Cu" region="-726 732 -733" universe="214"/>
+    <cell id="557" material="7" name="clad_Fe_up" region="-726 716 -730" universe="214"/>
+    <cell id="558" material="7" name="clad_Fe_down" region="-726 733 -717" universe="214"/>
+    <cell id="559" material="9" name="vacuum_world_cell" region="-734 736 -735 ~(-726 717 -716) ~(-727 726 731 -728) ~(-726 730 -729) ~(-726 732 -733) ~(-726 716 -730) ~(-726 733 -717)" universe="214"/>
+    <cell fill="213" id="560" name="core cell" region="-726 717 -716" universe="214"/>
+    <lattice id="210" name="235fuel_ Assembly">
+      <pitch>1.27 1.27</pitch>
+      <dimension>17 17</dimension>
+      <lower_left>-10.795 -10.795</lower_left>
+      <universes>
+208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 
+208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 
+208 208 208 208 208 209 208 208 209 208 208 209 208 208 208 208 208 
+208 208 208 209 208 208 208 208 208 208 208 208 208 209 208 208 208 
+208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 
+208 208 209 208 208 209 208 208 209 208 208 209 208 208 209 208 208 
+208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 
+208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 
+208 208 209 208 208 209 208 208 209 208 208 209 208 208 209 208 208 
+208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 
+208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 
+208 208 209 208 208 209 208 208 209 208 208 209 208 208 209 208 208 
+208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 
+208 208 208 209 208 208 208 208 208 208 208 208 208 209 208 208 208 
+208 208 208 208 208 209 208 208 209 208 208 209 208 208 208 208 208 
+208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 
+208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 208 </universes>
+    </lattice>
+    <lattice id="212" name="235fuel_ Assembly">
+      <pitch>38 38</pitch>
+      <dimension>2 2</dimension>
+      <lower_left>-38.0 -38.0</lower_left>
+      <universes>
+211 211 
+211 211 </universes>
+    </lattice>
+    <surface coeffs="0.0 0.0 0.4095" id="713" type="z-cylinder"/>
+    <surface coeffs="0.0 0.0 0.418" id="714" type="z-cylinder"/>
+    <surface coeffs="0.0 0.0 0.475" id="715" type="z-cylinder"/>
+    <surface coeffs="183" id="716" type="z-plane"/>
+    <surface coeffs="-183" id="717" type="z-plane"/>
+    <surface coeffs="-10.795" id="718" name="minimum x" type="x-plane"/>
+    <surface coeffs="10.795" id="719" name="maximum x" type="x-plane"/>
+    <surface coeffs="-10.795" id="720" name="minimum y" type="y-plane"/>
+    <surface coeffs="10.795" id="721" name="maximum y" type="y-plane"/>
+    <surface coeffs="-38.0" id="722" name="minimum x" type="x-plane"/>
+    <surface coeffs="38.0" id="723" name="maximum x" type="x-plane"/>
+    <surface coeffs="-38.0" id="724" name="minimum y" type="y-plane"/>
+    <surface coeffs="38.0" id="725" name="maximum y" type="y-plane"/>
+    <surface coeffs="0.0 0.0 47.45" id="726" type="z-cylinder"/>
+    <surface boundary="vacuum" coeffs="0.0 0.0 52.5" id="727" type="z-cylinder"/>
+    <surface coeffs="241.75" id="728" type="z-plane"/>
+    <surface coeffs="236.75" id="729" type="z-plane"/>
+    <surface coeffs="230" id="730" type="z-plane"/>
+    <surface coeffs="-241.75" id="731" type="z-plane"/>
+    <surface coeffs="-236.75" id="732" type="z-plane"/>
+    <surface coeffs="-230" id="733" type="z-plane"/>
+    <surface boundary="vacuum" coeffs="0.0 0.0 87.5" id="734" type="z-cylinder"/>
+    <surface boundary="vacuum" coeffs="400" id="735" type="z-plane"/>
+    <surface boundary="vacuum" coeffs="-400" id="736" type="z-plane"/>
+  </geometry>
+  <settings>
+    <run_mode>eigenvalue</run_mode>
+    <particles>500</particles>
+    <batches>300</batches>
+    <inactive>100</inactive>
+    <source particle="neutron" strength="1.0" type="independent">
+      <space type="fission">
+        <parameters>-87.5 -87.5 -400.0 87.5 87.5 400.0</parameters>
+      </space>
+    </source>
+  </settings>
+  </model>

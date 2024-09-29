@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<settings>
+  <run_mode>eigenvalue</run_mode>
+  <particles>500</particles>
+  <batches>300</batches>
+  <inactive>100</inactive>
+  <source particle="neutron" strength="1.0" type="independent">
+    <space type="fission">
+      <parameters>-87.5 -87.5 -400.0 87.5 87.5 400.0</parameters>
+    </space>
+  </source>
+</settings>
