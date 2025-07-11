@@ -511,9 +511,13 @@ class SourceOptimizationProblem(ElementwiseProblem):
         self.quarter_positions = []
         half_layers = nlayer // 2
         
-        for layer in range(half_layers, nlayer):  # 上半层
-            start_idx = layer * self.positions_per_layer
-            end_idx = start_idx + self.positions_per_layer
+        # 修正：每层实际的位置数 = 每象限源数 * 4个象限 = (sources_per_layer//2) * 4 = sources_per_layer * 2
+        sources_per_quadrant = sources_per_layer // 2  # 25
+        actual_positions_per_layer = sources_per_quadrant * 4  # 25 * 4 = 100
+        
+        for layer in range(half_layers, nlayer):  # 上半层（层3,4对应索引2,3）
+            start_idx = layer * actual_positions_per_layer
+            end_idx = start_idx + actual_positions_per_layer
             
             for pos_idx in range(start_idx, end_idx):
                 if pos_idx >= len(source_positions):
@@ -609,9 +613,11 @@ class SourceOptimizationProblem(ElementwiseProblem):
             # 获取原始位置信息
             x_orig, y_orig, z_orig = self.source_positions[orig_pos_idx].position
             
-            # 计算原始位置的层和在层内的相对位置
-            layer = orig_pos_idx // self.positions_per_layer
-            pos_in_layer = orig_pos_idx % self.positions_per_layer
+            # 计算原始位置的层和在层内的相对位置  
+            sources_per_quadrant = self.sources_per_layer // 2
+            actual_positions_per_layer = sources_per_quadrant * 4  # 100
+            layer = orig_pos_idx // actual_positions_per_layer
+            pos_in_layer = orig_pos_idx % actual_positions_per_layer
             
             print(f"  原始源棒：位置{orig_pos_idx}, 坐标(y={y_orig:.3f}, z={z_orig:.3f}), 层{layer+1}")
             
@@ -619,8 +625,8 @@ class SourceOptimizationProblem(ElementwiseProblem):
             mirror_positions = []
             
             # 1. 左上象限 (y<0, z>0) - Y轴镜像
-            for test_idx in range(layer * self.positions_per_layer, 
-                                (layer + 1) * self.positions_per_layer):
+            for test_idx in range(layer * actual_positions_per_layer, 
+                                (layer + 1) * actual_positions_per_layer):
                 if test_idx >= len(self.source_positions):
                     continue
                 x_test, y_test, z_test = self.source_positions[test_idx].position
@@ -632,8 +638,8 @@ class SourceOptimizationProblem(ElementwiseProblem):
             
             # 2. 右下象限 (y>0, z<0) - Z轴镜像  
             mirror_layer = self.nlayer - 1 - layer  # 对称层
-            for test_idx in range(mirror_layer * self.positions_per_layer,
-                                (mirror_layer + 1) * self.positions_per_layer):
+            for test_idx in range(mirror_layer * actual_positions_per_layer,
+                                (mirror_layer + 1) * actual_positions_per_layer):
                 if test_idx >= len(self.source_positions):
                     continue
                 x_test, y_test, z_test = self.source_positions[test_idx].position
@@ -644,8 +650,8 @@ class SourceOptimizationProblem(ElementwiseProblem):
                     break
             
             # 3. 左下象限 (y<0, z<0) - 双轴镜像
-            for test_idx in range(mirror_layer * self.positions_per_layer,
-                                (mirror_layer + 1) * self.positions_per_layer):
+            for test_idx in range(mirror_layer * actual_positions_per_layer,
+                                (mirror_layer + 1) * actual_positions_per_layer):
                 if test_idx >= len(self.source_positions):
                     continue
                 x_test, y_test, z_test = self.source_positions[test_idx].position
@@ -664,8 +670,8 @@ class SourceOptimizationProblem(ElementwiseProblem):
                     total_sources += 1
                     
                     x_mir, y_mir, z_mir = self.source_positions[mirror_idx].position
-                    mirror_layer = mirror_idx // self.positions_per_layer
-                    print(f"    镜像{i+1}: 位置{mirror_idx}, 坐标(y={y_mir:.3f}, z={z_mir:.3f}), 层{mirror_layer+1}")
+                    mirror_layer_idx = mirror_idx // actual_positions_per_layer
+                    print(f"    镜像{i+1}: 位置{mirror_idx}, 坐标(y={y_mir:.3f}, z={z_mir:.3f}), 层{mirror_layer_idx+1}")
         
         return total_sources
 
